@@ -274,7 +274,7 @@ class Ketidakhadiran extends BaseController
         // cek validasi
         $rules = [
             'tipe_ketidakhadiran' => [
-                'rules' => 'required|in_list[CUTI,IZIN,SAKIT]',
+                'rules' => 'required|in_list[CUTI,IZIN,TUGAS LUAR]',
                 'errors' => [
                     'required' => 'Tipe ketidakhadiran wajib diisi.',
                     'in_list' => 'Pilih tipe ketidakhadiran yang tersedia.'
@@ -287,14 +287,14 @@ class Ketidakhadiran extends BaseController
                 ]
             ],
             'tanggal_mulai' => [
-                'rules' => 'required|valid_date[Y-m-d]|daysAfter[3]',
+                'rules' => 'required|valid_date[Y-m-d]|daysAfter[1]',
                 'errors' => [
                     'required' => 'Tanggal mulai ketidakhadiran wajib diisi.',
                     'valid_date' => 'Tanggal harus dalam format YYYY-MM-DD.',
                 ]
             ],
             'tanggal_berakhir' => [
-                'rules' => 'required|valid_date[Y-m-d]|offLimitRule[3]',
+                'rules' => 'required|valid_date[Y-m-d]|offLimitRule[7]',
                 'errors' => [
                     'required' => 'Tanggal berakhir ketidakhadiran wajib diisi.',
                     'valid_date' => 'Tanggal harus dalam format YYYY-MM-DD.',

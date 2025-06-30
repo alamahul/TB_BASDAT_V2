@@ -68,6 +68,9 @@
                                                 <a href="<?= base_url('/laporan-presensi-bulanan') ?>" class="dropdown-item">
                                                     Laporan Presensi Bulanan
                                                 </a>
+                                                <a href="<?= base_url('/laporan-presensi-bulanan_pdf') ?>" class="dropdown-item">
+                                                    Laporan Presensi Bulanan PDF
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

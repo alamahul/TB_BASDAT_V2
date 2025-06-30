@@ -161,4 +161,38 @@ class KetidakhadiranModel extends Model
         $this->builder->where('status_pengajuan', 'PENDING');
         $this->builder->update(['status_pengajuan' => 'REJECTED']);
     }
+
+    public function getKetidakhadiranInMonth($month, $year)
+    {
+        return $this->where("MONTH(tanggal_mulai)", $month)
+                    ->where("YEAR(tanggal_mulai)", $year)
+                    ->findAll();
+    }
+    public function getIzinByMonth($id_pegawai, $bulan, $tahun)
+    {
+        $builder = $this->db->table('ketidakhadiran');
+        $builder->where('id_pegawai', $id_pegawai);
+        $builder->where('MONTH(tanggal_mulai) <=', $bulan);
+        $builder->where('MONTH(tanggal_berakhir) >=', $bulan);
+        $builder->where('YEAR(tanggal_mulai)', $tahun);
+
+        $query = $builder->get();
+
+        $result = [];
+
+        foreach ($query->getResult() as $row) {
+            $start = strtotime($row->tanggal_mulai);
+            $end = strtotime($row->tanggal_berakhir);
+
+            while ($start <= $end) {
+                $tanggal = date('Y-m-d', $start);
+                if (date('m', $start) == $bulan) {
+                    $result[$tanggal] = strtoupper($row->tipe_ketidakhadiran); // 'IZIN' atau 'TL'
+                }
+                $start = strtotime("+1 day", $start);
+            }
+        }
+
+        return $result;
+    }
 }

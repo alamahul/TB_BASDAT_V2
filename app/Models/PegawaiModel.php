@@ -121,4 +121,10 @@ class PegawaiModel extends Model
         $query = $builder->get();
         return $query->getNumRows();
     }
+
+    public function get_all_pegawai()
+    {
+        $query = $this->builder('pegawai'); // 'presensi' adalah nama tabel Anda
+        return $query->get()->getResult(); // Mengembalikan hasil dalam bentuk array of objects
+    }
 }

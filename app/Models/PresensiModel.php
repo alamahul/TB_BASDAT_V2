@@ -187,4 +187,33 @@ class PresensiModel extends Model
         $query = $builder->where('tanggal_masuk', date('Y-m-d'))->get();
         return $query->getNumRows();
     }
+
+    public function getPresensiInMonth($month, $year)
+    {
+        return $this->where("MONTH(tanggal_masuk)", $month)
+                    ->where("YEAR(tanggal_masuk)", $year)
+                    ->findAll();
+    }
+
+    public function getPresensiByMonth($id_pegawai, $bulan, $tahun)
+    {
+        $builder = $this->db->table('presensi');
+        $builder->select('tanggal_masuk, jam_masuk');
+        $builder->where('id_pegawai', $id_pegawai);
+        $builder->where('MONTH(tanggal_masuk)', $bulan);
+        $builder->where('YEAR(tanggal_masuk)', $tahun);
+
+        $query = $builder->get();
+
+        $result = [];
+        foreach ($query->getResult() as $row) {
+            $result[$row->tanggal_masuk] = [
+                'jam_masuk' => $row->jam_masuk
+            ];
+        }
+
+        return $result;
+    }
+
+
 }

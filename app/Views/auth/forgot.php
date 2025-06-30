@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Forgot Password | O-Present</title>
+    <title>Forgot Password | SIPEDES V2</title>
     <!-- CSS files -->
     <link href="<?= base_url('../assets/css/tabler.min.css?1684106062') ?>" rel="stylesheet" />
     <link href="<?= base_url('../assets/css/tabler-flags.min.css?1684106062') ?>" rel="stylesheet" />
@@ -40,7 +40,7 @@
             <div class="text-center mb-4">
                 <a href="<?= base_url() ?>" class="navbar-brand navbar-brand-autodark align-items-center">
                     <img src="<?= base_url('../assets/img/company/logo.png') ?>" height="36" alt="O-Present">
-                    <span>O-Present</span>
+                    <span>SIPEDES V2</span>
                 </a>
             </div>
             <form class="card card-md" action="<?= url_to('forgot') ?>" method="post" autocomplete="off" novalidate>

@@ -51,6 +51,8 @@ $routes->post('/laporan-presensi-harian/excel', 'Presensi::laporanHarianExcel', 
 $routes->post('/laporan-presensi-bulanan/excel', 'Presensi::laporanBulananExcel', ['filter' => 'role:admin,head']);
 $routes->post('/rekap-presensi/excel', 'Presensi::rekapPresensiPegawaiExcel', ['filter' => 'role:admin,pegawai']);
 
+$routes->get('/laporan-presensi-bulanan_pdf', 'Presensi::laporanBulananPDF', ['filter' => 'role:admin,head']);
+
 $routes->get('/ketidakhadiran', 'Ketidakhadiran::index', ['filter' => 'role:admin,pegawai']);
 $routes->get('/pengajuan-ketidakhadiran', 'Ketidakhadiran::add', ['filter' => 'role:admin,pegawai']);
 $routes->post('/pengajuan-ketidakhadiran/store', 'Ketidakhadiran::store', ['filter' => 'role:admin,pegawai']);

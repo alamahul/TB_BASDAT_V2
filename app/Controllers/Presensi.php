@@ -7,6 +7,7 @@ use App\Models\UsersModel;
 use App\Models\PegawaiModel;
 use App\Models\PresensiModel;
 use App\Models\LokasiPresensiModel;
+use App\Models\KetidakhadiranModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -16,6 +17,7 @@ class Presensi extends BaseController
     protected $lokasiModel;
     protected $presensiModel;
     protected $pegawaiModel;
+    protected $ketidakhadiranModel;
 
     public function __construct()
     {
@@ -23,6 +25,7 @@ class Presensi extends BaseController
         $this->lokasiModel = new LokasiPresensiModel();
         $this->presensiModel = new PresensiModel();
         $this->pegawaiModel = new PegawaiModel();
+        $this->ketidakhadiranModel = new KetidakhadiranModel();
     }
 
     public function presensiMasuk()
@@ -37,7 +40,7 @@ class Presensi extends BaseController
         $zona_waktu = $this->request->getVar('zona_waktu');
         $tanggal_masuk = $this->request->getVar('tanggal_masuk');
         $jam_masuk = $this->request->getVar('jam_masuk');
-
+        
         // Jika user menonaktifkan lokasi, maka arahkan kembali ke halaman home
         if (empty($latitude_pegawai) || empty($longitude_pegawai)) {
             session()->setFlashdata('gagal', 'Lokasi Anda tidak terdeteksi. Mohon aktifkan fitur lokasi di perangkat Anda dan refresh halaman ini.');
@@ -655,6 +658,7 @@ class Presensi extends BaseController
 
     public function laporanBulananExcel()
     {
+        
         $filter_bulan = $this->request->getPOST('filter_bulan');
         $filter_tahun = $this->request->getPOST('filter_tahun');
         if ($filter_tahun === '') {
@@ -787,4 +791,51 @@ class Presensi extends BaseController
         $writer->save('php://output');
         exit();
     }
+
+    public function laporanBulananPDF()
+    {
+        
+    
+        $user_profile = $this->usersModel->getUserInfo(user_id());
+    $filter_bulan = $this->request->getGet('filter_bulan') ?? date('m');
+    $filter_tahun = $this->request->getGet('filter_tahun') ?? date('Y');
+
+    if (empty($filter_bulan) || empty($filter_tahun)) {
+        $data_bulan = date('Y-m');
+    } else {
+        $data_bulan = $filter_tahun . '-' . $filter_bulan;
+    }
+
+    $tahun_mulai = $this->presensiModel->getMinYear() ?? date('Y');
+
+    // Ambil semua pegawai
+    $pegawaiList = $this->pegawaiModel->get_all_pegawai();
+    //var_dump($pegawaiList);die;
+    // Format data per pegawai
+    $data_presensi = [];
+    foreach ($pegawaiList as $pegawai) {
+        //var_dump($pegawai);die;
+        $id_pegawai = $pegawai->id;
+        $presensi = $this->presensiModel->getPresensiByMonth($id_pegawai, $filter_bulan, $filter_tahun);
+        $izin = $this->ketidakhadiranModel->getIzinByMonth($id_pegawai, $filter_bulan, $filter_tahun);
+
+        $data_presensi[] = [
+            'nip' => $pegawai->nip,
+            'nama' => $pegawai->nama,
+            'presensi' => $presensi,
+            'izin' => $izin
+        ];
+    }
+    //var_dump('YES');die;
+
+    return view('presensi/laporan_presensi_bulanan_pdf', [
+        'title' => 'Laporan Presensi Bulanan PDF',
+        'user_profile' => $user_profile,
+        'filter_bulan' => $filter_bulan,
+        'filter_tahun' => $filter_tahun,
+        'data_bulan' => $data_bulan,
+        'tahun_mulai' => $tahun_mulai,
+        'data_presensi' => $data_presensi
+    ]);
+}
 }
