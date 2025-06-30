@@ -29,15 +29,15 @@ Temukan fitur-fitur lengkap pada aplikasi presensi O-Present:
 
 ## Getting Started
 
-Anda perlu melakukan sedikit konfigurasi di bawah ini sebelum mulai menjalankan web O-Present:
+Anda perlu melakukan sedikit konfigurasi di bawah ini sebelum mulai menjalankan web SIPEDES V2:
 
 1. Anda dapat mengunduh kode sumber aplikasi ini dari repositori GitHub dengan tombol "Download ZIP" atau jalankan perintah berikut di terminal Anda:
 
    ```console
-   git clone https://github.com/josephines1/o-present.git
+   git clone https://github.com/alamahul/TB_BASDAT_V2
    ```
 
-2. Ekstrak file Zip O-Present yang sudah diunduh dan lokasikan folder aplikasi di dalam folder htdocs.
+2. Ekstrak file Zip TB_BASDAT_V2 yang sudah diunduh dan lokasikan folder aplikasi di dalam folder htdocs.
 
 3. Buka folder project tersebut di Code Editor (seperti Visual Studio Code)
 
@@ -229,3 +229,7 @@ Jika Anda mendapat pesan error saat menjalankan source code O-Present, silahkan 
 > Made by [Josephine](https://josephines1.github.io/).
 > Modify by [alamahul](https://alamahul.github.io).
 > Template by [tabler.io](tabler.io)
+
+# Credit buat pembuat
+
+Terima kasih kepada [Josephine](https://josephines1.github.io/) yang telah membuat aplikasi ini dan telah memberikan akses open source untuk kami untuk modifikasi.
