@@ -133,7 +133,7 @@ Buka: [http://localhost:8080](http://localhost:8080)
 
 ### 📁 Pengajuan & Approval Ketidakhadiran
 
-> Tipe: **Cuti, Izin, Sakit**  
+> Tipe: **TUGAS LUAR, IZIN**  
 > Validasi tanggal & upload file surat keterangan
 
 ### 👥 Master Data
@@ -176,6 +176,16 @@ Aplikasi ini dikembangkan untuk memenuhi **Tugas Besar Basis Data**, dengan foku
 - **Penerapan CRUD dan validasi data**
 
 ---
+
+## group_members = """
+
+## 👥 Anggota Kelompok
+
+1. **Nama:** Alamahul Bayan &nbsp;&nbsp;&nbsp; **NIM:** 2306163
+2. **Nama:** Muhammad Fathul Barry &nbsp;&nbsp;&nbsp; **NIM:** 2306122
+3. **Nama:** Muhammad Jafar Sofian &nbsp;&nbsp;&nbsp; **NIM:** 2306160
+
+"""
 
 ## 🙏 Kredit
 
