@@ -177,8 +177,6 @@ Aplikasi ini dikembangkan untuk memenuhi **Tugas Besar Basis Data**, dengan foku
 
 ---
 
----
-
 ## 👥 Anggota Kelompok
 
 1. **Nama:** Alamahul Bayan &nbsp;&nbsp;&nbsp; **NIM:** 2306163
