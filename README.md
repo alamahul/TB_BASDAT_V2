@@ -177,15 +177,18 @@ Aplikasi ini dikembangkan untuk memenuhi **Tugas Besar Basis Data**, dengan foku
 
 ---
 
-## group_members = """
+---
 
 ## 👥 Anggota Kelompok
 
 1. **Nama:** Alamahul Bayan &nbsp;&nbsp;&nbsp; **NIM:** 2306163
 2. **Nama:** Muhammad Fathul Barry &nbsp;&nbsp;&nbsp; **NIM:** 2306122
 3. **Nama:** Muhammad Jafar Sofian &nbsp;&nbsp;&nbsp; **NIM:** 2306160
+4. **Nama:** Ramdhani Sulaeman Burhanudin &nbsp;&nbsp;&nbsp; **NIM:** 2306161
+5. **Nama:** Aditya Permana &nbsp;&nbsp;&nbsp; **NIM:** 2306162
+6. **Nama:** MOHAMMAD KAYLA ANASA &nbsp;&nbsp;&nbsp; **NIM:** 2306166
 
-"""
+---
 
 ## 🙏 Kredit
 
